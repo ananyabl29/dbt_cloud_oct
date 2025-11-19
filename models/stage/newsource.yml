@@ -1,0 +1,7 @@
+sources:
+  - name: newsrc
+    database: analytics
+    schema: dbt_abl
+    tables:
+      - name: suppliers
+
