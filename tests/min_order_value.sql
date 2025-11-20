@@ -7,4 +7,4 @@ WITH orders AS (
 
 SELECT order_id,total_price
 FROM orders
-WHERE total_price <= 900
+WHERE total_price <= 800

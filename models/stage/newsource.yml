@@ -5,3 +5,10 @@ sources:
     tables:
       - name: suppliers
 
+  - name: new_src
+    database: mkmotors_dev
+    schema: staging
+    tables:
+      - name: stg_employees
+
+

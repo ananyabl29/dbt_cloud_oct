@@ -11,14 +11,30 @@ models:
       - name: region_name
         data_tests:
           - accepted_values:
-              values: ['ASIA', 'AFRICA', 'AMERICA']
+              values: ['ASIA', 'AFRICA', 'AMERICA','MIDDLE EAST','SOUTH EAST','EUROPE']
               config:
                 store_failures: true
                 schema: error
 
   - name: stg_nations
+    config:
+      group: sales
+      contract: 
+        enforced: true
+        
     columns:
       - name: nation_id
+        data_type: int
+        constraints:
+          - type: not_null
+      - name: Nation_name
+        data_type: string
+      - name: Region_id
+        data_type: int
+      - name: updated_at
+        data_type: timestamp
+
+          
         description: '{{doc("Primary_key")}}'
         data_tests:
           - unique
@@ -29,9 +45,13 @@ models:
         data_tests:
           - relationships:
               to: ref('stg_regions')
-              field: region_id    # FIXED
+              field: region_id  
 
   - name: stg_customers
+    config:
+      group: sales
+      pre_hook: 'alter session set query_tag="hooks"'
+
     columns:
       - name: customer_id
         description: '{{doc("Primary_key")}}'
@@ -67,10 +87,12 @@ models:
               values: ['P','F','o']
 
   - name: stg_line_items
+
     description: All items for each orders
     columns:
       - name: order_item_id
         description: Surrogate key column for order items
+  
 
 seeds:
  - name: suppliers 
