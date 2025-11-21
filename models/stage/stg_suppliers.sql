@@ -1,3 +1,5 @@
+{{config(materialized='ephemeral')}}
+
 WITH supplier_info AS (
     SELECT
 
