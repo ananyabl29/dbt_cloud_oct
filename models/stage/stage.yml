@@ -20,7 +20,7 @@ models:
     config:
       group: sales
       contract: 
-        enforced: false
+        enforced: true
         
     columns:
       - name: nation_id
@@ -32,9 +32,7 @@ models:
       - name: Region_id
         data_type: int
       - name: updated_at
-        data_type: timestamp_ntz
-
-          
+        data_type: timestamp_ntz  
         description: '{{doc("Primary_key")}}'
         data_tests:
           # - unique

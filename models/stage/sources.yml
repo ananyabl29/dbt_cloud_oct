@@ -4,21 +4,45 @@ sources:
     schema: mk_mall
     tables:
       - name: customers
+
       - name: regions
+
       - name: nations
+        columns:
+          - name: nation_id
+            data_type: int
+          - name: Nation_name
+            data_type: string
+          - name: Region_id
+            data_type: int
+          - name: updated_at
+            data_type: timestamp_ntz
+        description: '{{doc("Primary_key")}}'
+        data_tests:
+          # - unique
+          - not_null
+
+      - name: region_id
+        description: '{{doc("Foreign_key")}}'
+        data_tests:
+          - relationships:
+              to: ref('stg_regions')
+              field: region_id
+
       - name: v_nations
+
       - name: nation_info
+
       - name: orders
-        config:
-          freshness:
-            warn_after: {count: 1,period: day}
-            error_after: {count: 3,period: day}
-          loaded_at_field: o_orderdate::timestamp_ntz
+        freshness:
+          warn_after: { count: 1, period: day }
+          error_after: { count: 3, period: day }
+        loaded_at_field: o_orderdate::timestamp_ntz
+
       - name: lineitems
+
       - name: parts
+
       - name: suppliers
 
       - name: partsupps
-
-
-

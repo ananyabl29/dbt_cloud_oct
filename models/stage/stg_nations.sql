@@ -1,4 +1,8 @@
-{{ config(query_tag='test1',alias=this.name+var('v_id'),access='public') }}
+{{ config(
+    query_tag = 'test1_',
+    alias = this.name ~ var('v_id'),
+    access = 'public'
+) }}
 
 
 with nation as (
