@@ -1,0 +1,14 @@
+dbt_cloud:
+  outputs:
+    dev:
+      account: QDB65483
+      database: analytics
+      password: Sachin$123
+      role: analyticsengineer
+      schema: dbt_abl
+      threads: 3
+      type: snowflake
+      user: sachin
+      warehouse: transform_wh
+  target: dev
+
